@@ -14,7 +14,7 @@ angular.module('quoteBook')
     return quotes;
   }
   this.addData = function(data) {
-    if (data.hasOwnProperty(text) && data.hasOwnProperty(author)) {
+    if (data.hasOwnProperty('text') && data.hasOwnProperty('author')) {
       quotes.push(data);
     }
   }
