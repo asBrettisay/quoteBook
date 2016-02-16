@@ -8,16 +8,16 @@
 <body ng-controller="mainCtrl">
 
 <section class="buttonContainer">
-  <form novalidate></form>
-  <div ng-click="dataService.addData(quote)" class="btn">Add Quote</div>
-  <div ng-click="dataService.removeData(quote)" class="btn">Remove Quote</div>
+  <input type="text" ng-model="quoteInput">
+  <div ng-click="addData(quoteInput)" class="btn">Add Quote</div>
+  <div ng-click="removeData(quoteInput)" class="btn">Remove Quote</div>
   <div class="btn">Filter Quotes</div>
 
 </section>
 
 
 <container class="main">
-  <div ng-repeat="quote in quoteData" class="quote">
+  <div ng-repeat="quote in quoteData track by $index" class="quote">
     {{ quote.text }}
     <div class="author">- {{ quote.author }}</div>
   </div>

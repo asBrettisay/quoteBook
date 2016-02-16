@@ -16,11 +16,26 @@ angular.module('quoteBook')
   this.addData = function(data) {
     if (data.hasOwnProperty('text') && data.hasOwnProperty('author')) {
       quotes.push(data);
+      updateStorage();
     }
   }
   this.removeData = function(quote) {
-    quotes = quotes.filter(function(item) {
-      return (item.text !== quote);
-    })
+    for (var i = 0; i < quotes.length; i++) {
+      if (quotes[i].text === quote) {
+        quotes.splice(i, 1);
+      }
+    }
+  }
+
+  function updateStorage() {
+    localStorage.setItem('quotes', JSON.stringify(quotes))
+  }
+
+  this.retrieveStorage = function() {
+    if (localStorage['quotes']) {
+      quotes = JSON.parse(localStorage['quotes']);
+    } else {
+      localStorage['quotes'] = JSON.stringify(quotes)
+    }
   }
 })

@@ -9,12 +9,12 @@ describe('quoteBook', function() {
 
   describe('dataService', function() {
 
-    beforeEach(function() {
-      var $scope = {
-        quotes: []
-      };
-      controller = $controller('mainCtrl', { $scope: $scope });
-    });
+    var scope, controller;
+    beforeEach(inject(function($rootScope) {
+      scope = $rootScope.$new();
+      quotes = [];
+      controller = $controller('mainCtrl', { $scope: scope });
+    }))
 
     it('should getData', function() {
       var data = dataService.getData();
@@ -23,10 +23,9 @@ describe('quoteBook', function() {
     })
 
     it('should addData', function() {
-      var quotes = [];
       var quote = {text: "foo", author: "anonymous"};
-      dataService.addData(quote);
-      expect(quotes[0]).toEqual(quote);
+      dataService.addData(quote)
+      expect(dataService.quotes[(dataService.quotes.length)-1]).toEqual(quote);
     })
   })
 })
