@@ -1,0 +1,23 @@
+html {
+  font-family: helvetica;
+}
+
+
+
+.quote {
+  margin: 25px auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #bebebe;
+  width: 400px;
+  min-height: 75px;
+  position: relative;
+}
+
+.author {
+  font-style: italic;
+  float: right;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
