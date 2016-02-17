@@ -12,7 +12,7 @@ describe('quoteBook', function() {
     var scope, controller;
     beforeEach(inject(function($rootScope) {
       scope = $rootScope.$new();
-      quotes = [];
+      dataService.quotes = [];
       controller = $controller('mainCtrl', { $scope: scope });
     }))
 
@@ -25,6 +25,7 @@ describe('quoteBook', function() {
     it('should addData', function() {
       var quote = {text: "foo", author: "anonymous"};
       dataService.addData(quote)
+      console.log('Attempting to add ' + quote + ' to ' + dataService.quotes)
       expect(dataService.quotes[(dataService.quotes.length)-1]).toEqual(quote);
     })
   })

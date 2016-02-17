@@ -2,10 +2,9 @@ angular.module('quoteBook')
 .controller('mainCtrl', ['$scope', 'dataService', function($scope, dataService) {
 
     dataService.retrieveStorage();
-    
-    $scope.quoteData = dataService.getData();
 
-    $scope.quotes = dataService.quotes;
+    $scope.quoteData = dataService.getData();
+    $scope.filterType = "";
 
     $scope.addData = function(data) {
       var obj = { text: $scope.quoteInput, author: 'Anonymous' };
@@ -17,5 +16,14 @@ angular.module('quoteBook')
       dataService.removeData(data);
       $scope.quoteInput = '';
     };
+
+    $scope.changeFilter = function() {
+      if ($scope.filterType === "") {
+        $scope.filterType = $scope.quoteInput
+      } else {
+        $scope.filterType = "";
+      }
+    }
+
 
 }]);
